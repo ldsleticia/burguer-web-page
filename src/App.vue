@@ -1,26 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <input type="text" v-model="input_name" placeholder="digite seu nome"/>
+    <input type="text" v-model="input_age" placeholder="digite sua idade">
+    <input type="submit" value="Enviar" @click="submitForm">
+
+    <p>Seu nome é {{ name }} e você tem {{ age }} anos</p>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      name: '',
+      age: '',
+      input_name: '',
+    }
+  },
+  methods: {
+    submitForm(e){
+      e.preventDefault();
+      console.log(this.input_name)
+      this.name = this.input_name
+      this.age = this.input_age
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
